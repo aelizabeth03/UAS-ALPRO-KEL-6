@@ -12,9 +12,10 @@ def main_menu():
         print("3. Perbarui Jumlah Barang")
         print("4. Cari Barang Berdasarkan Nama")
         print("5. Tampilkan Barang dengan Stok di Bawah Jumlah Tertentu")
-        print("6. Keluar")
+        print("6. Lihat Daftar Barang dan Stok")
+        print("7. Keluar")
 
-        pilihan = input("Pilih menu (1-6): ")
+        pilihan = input("Pilih menu (1-7): ")
 
         if pilihan == "1":
             tambah_barang()
@@ -27,10 +28,13 @@ def main_menu():
         elif pilihan == "5":
             tampilkan_barang_bawah_stok()
         elif pilihan == "6":
+            tampilkan_daftar_barang()
+        elif pilihan == "7":
             print("Program Stok Barang Telah Selesai!")
             break
         else:
             print("Pilihan tidak valid. Silakan coba lagi.")
+
 
 #menambah barang baru
 def tambah_barang():
@@ -89,7 +93,16 @@ def tampilkan_barang_bawah_stok():
             print("Tidak ada barang dengan stok di bawah batas yang diberikan.")
     except ValueError:
         print("Input batas jumlah harus berupa angka.")
-        
+
+#menampilkan daftar semua barang dan stok
+def tampilkan_daftar_barang():
+    print("\n=== Daftar Barang dan Stok ===")
+    if not stok_barang:
+        print("Stok kosong. Belum ada barang yang ditambahkan.")
+    else:
+        for nama, jumlah in stok_barang.items():
+            print(f"- {nama}: {jumlah}")
+            
 if __name__ == "__main__":
     main_menu()
  
